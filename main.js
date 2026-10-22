@@ -282,4 +282,17 @@ function beginPresenter(){
  });
  initQA();initRefs();drawPresenterClock();setInterval(drawPresenterClock,300);bc?.postMessage({type:'request'});
 }
+window.addEventListener('rne-cinematic-start',(event)=>{
+ const n=event.detail?.speakers===2?2:1;
+ DATA.slides.forEach((slide,index)=>{slide.role=n===2?(index<6?'발표자 1':'발표자 2'):'대표 발표자'});
+ state.clockStart=0;
+ startClock();
+ const id=document.querySelector('#slide-counter')?.textContent||'1';
+ const i=Math.max(0,(parseInt(id,10)||1)-1);
+ displayIndex(i,false);
+ if(document.querySelector('#presenter-role')){
+  const role=document.querySelector('#presenter-role');role.textContent=(n===1?'대표 발표자':'발표자 '+(i<6?'1':'2'))+' · '+(i+1)+'/11장';
+ }
+ window.dispatchEvent(new Event('rne:mobile-speakercount'));
+});
 if(isPresenter)beginPresenter();else if(!isAudience && matchMedia('(max-width:700px) and (orientation:portrait)').matches){startMobile({modalHtml,initQA,initRefs,openQA,showRefs,startClock,resetClock,remaining,isStarted:()=>!!state.clockStart})}else beginDeck();

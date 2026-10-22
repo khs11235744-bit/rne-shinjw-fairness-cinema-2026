@@ -16,7 +16,7 @@ try{
  const page=await ctx.newPage();
  page.on('pageerror',e=>errors.push(String(e)));
  page.on('console',m=>{if(m.type()==='error')messages.push('console: '+m.text())});
- const base='http://127.0.0.1:4177/';
+ const base='http://127.0.0.1:4177/?preview=1';
  await page.goto(base,{waitUntil:'networkidle',timeout:60000});
  await page.locator('.scene').first().waitFor({timeout:25000});
  await page.waitForTimeout(1000); console.log('LAYOUT='+JSON.stringify(await page.evaluate(()=>['.reveal','.reveal .slides','.reveal .slides>section.scene'].map(sel=>{const e=document.querySelector(sel),r=e.getBoundingClientRect(),s=getComputedStyle(e);return {sel,x:r.x,y:r.y,width:r.width,height:r.height,left:s.left,top:s.top,transform:s.transform,position:s.position}}))));
@@ -39,7 +39,7 @@ try{
  await page.evaluate(()=>window.rneDeck.slide(10));
  await page.waitForTimeout(600);
  await page.screenshot({path:path.join(output,'scene-11.jpg'),type:'jpeg',quality:80});
- await page.locator('#btn-qa').click();
+ await page.keyboard.press('q');
  await page.locator('#qa-root.visible').waitFor();
  assert.match(await page.locator('#qa-question').innerText(),/포항고/);
  await page.locator('#qa-answer-toggle').click();
@@ -47,11 +47,11 @@ try{
  await page.locator('#qa-grade').selectOption('5');
  assert.match(await page.locator('#qa-summary').innerText(),/1\/32/);
  await page.locator('#qa-close').click();
- await page.locator('#btn-sources').click();
+ await page.keyboard.press('b');
  await page.locator('#refs-root.visible').waitFor();
  await page.locator('#refs-close').click();
  const popPromise=page.waitForEvent('popup',{timeout:10000});
- await page.locator('#btn-presenter').click();
+ await page.keyboard.press('p');
  const pop=await popPromise;
  await pop.locator('#presenter-notes').waitFor({timeout:15000});
  assert.ok((await pop.locator('#presenter-notes').innerText()).length>90,'발표 대본 로딩');

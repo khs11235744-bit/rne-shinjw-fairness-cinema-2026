@@ -254,3 +254,4 @@ body.audience #mini-progress{height:3px}
 .m-nav button:disabled{opacity:.35}.m-nav button#m-timer{background:#64f5d2;color:#062326}
 .m-nav #m-clock{font-variant-numeric:tabular-nums;font-size:13px;font-weight:900}
 @media (prefers-reduced-motion:reduce){.m-stage *{transition:none!important;animation:none!important}}
+.cine-shin .reveal{height:100vh!important;inset:0!important}.team-signature{font-size:25px;color:#77f4d8;letter-spacing:.04em;font-weight:900;padding-bottom:18px}.cine-shin .hero-grid .hero-left .big-title{font-size:92px!important}

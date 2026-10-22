@@ -1,4 +1,4 @@
-import {DATA,esc} from './scenes.js';
+﻿import {DATA,esc} from './scenes.js';
 const $=s=>document.querySelector(s);
 const fmt=v=>String(Math.floor(Math.max(0,v)/60)).padStart(2,'0')+':'+String(Math.floor(Math.max(0,v)%60)).padStart(2,'0');
 function visual(s){
@@ -44,5 +44,5 @@ export function startMobile(opt){
  let touch=0;
  $('#m-stage').addEventListener('touchstart',e=>{touch=e.touches[0].clientX},{passive:true});
  $('#m-stage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touch;if(Math.abs(dx)>80)move(dx<0?1:-1)},{passive:true});
- opt.initQA();opt.initRefs();paint();display();setInterval(display,400);
+ window.addEventListener("rne:mobile-speakercount",paint);opt.initQA();opt.initRefs();paint();display();setInterval(display,400);
 }
