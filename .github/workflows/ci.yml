@@ -1,0 +1,20 @@
+name: Verify cinematic R&E presentation
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Validate research story, timing and STAT
+        run: npm test
+      - name: Build the static presentation
+        run: npm run build

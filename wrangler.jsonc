@@ -6,7 +6,6 @@
     "enabled": false
   },
   "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
+    "directory": "./dist"
   }
 }

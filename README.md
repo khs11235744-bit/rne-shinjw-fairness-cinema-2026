@@ -67,3 +67,18 @@ Windows Node.js 22 이상.
 
 실제 Windows Chrome + Playwright로 11장 이동, 원형 7분 시계, 영수증 분할, ECharts 렌더링, 별도 발표자 창, STAT 문답·채점, 휴대전화 화면을 확인합니다. QA 파일은 test/에 있습니다.
 
+
+## 배포된 발표 주소 (2026-10-22 검증)
+
+- 웹 발표: https://shinjw-rne-fairness-2026.khs11235744.workers.dev
+- GitHub 소스: https://github.com/khs11235744-bit/rne-shinjw-fairness-cinema-2026
+- 공개 주소에서 HTTP 200 / 11개 슬라이드 / ECharts / Vizzu WebAssembly / STAT 질문 UI 확인.
+
+## 교사용 첨부자료
+
+- [7분 학생 발표자 대본](docs/7분_발표자_대본.md)
+- [STAT 예상 질문 32개와 모범 답변](docs/STAT_32문항_모범답안.md)
+- [오픈소스 50개 조사표](docs/GitHub_50_모션그래픽_비교.md)
+- [적용·참고 TOP 10 비교](docs/TOP10_선정비교.md)
+
+GitHub Actions가 연구 스토리 11장·420초·STAT 32문항 구조와 사이트 빌드를 확인합니다. Cloudflare 게시 자체는 별도의 현장 배포 명령으로 수행하며, GitHub Actions에 사용자 비밀값이나 Cloudflare 키를 넣지 않았습니다.
