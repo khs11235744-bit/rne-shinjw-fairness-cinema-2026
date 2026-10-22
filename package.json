@@ -1,0 +1,22 @@
+{
+  "name": "shinjw-fairness-cinema",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node test/validate.mjs"
+  },
+  "dependencies": {
+    "vizzu": "^0.18.0",
+    "echarts": "^6.0.0",
+    "motion": "^12.23.0",
+    "reveal.js": "^5.2.1",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}

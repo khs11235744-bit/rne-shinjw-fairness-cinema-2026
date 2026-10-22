@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const source=fs.readFileSync(new URL('../data.js',import.meta.url),'utf8');
+const data=JSON.parse(source.replace(/^\s*window\.RNE_STORY\s*=\s*/,'').replace(/;\s*$/,''));
+assert.equal(data.slides.length,11);
+assert.equal(data.slides.reduce((sum,s)=>sum+s.sec,0),420);
+assert.equal(data.duration,420);
+assert.equal(data.questions.length,32);
+assert.equal(new Set(data.slides.map(s=>s.id)).size,11);
+assert.ok(data.slides.every(s=>s.title&&s.notes&&s.source&&s.role&&s.sec>0));
+assert.ok(data.references.some(r=>/Rawls/.test(r.title)));
+assert.ok(data.references.some(r=>/Habermas/.test(r.title)));
+console.log('VALIDATION OK — 11장, 420초, STAT 32문항, 필수 출처·발표자 대본 완비');
