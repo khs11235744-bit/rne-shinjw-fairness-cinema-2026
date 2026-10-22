@@ -1,4 +1,4 @@
-import {createRequire} from 'node:module';
+﻿import {createRequire} from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -11,7 +11,7 @@ try{
  page.on('pageerror',e=>errors.push(String(e)));
  page.on('response',r=>{if(r.status()>=400)bad.push({status:r.status(),url:r.url()})});
  page.on('console',m=>{if(m.type()==='error')messages.push(m.text())});
- const response=await page.goto(site,{waitUntil:'networkidle',timeout:65000});
+ const response=await page.goto(site+'?preview=1',{waitUntil:'networkidle',timeout:65000});
  assert.equal(response.status(),200,'공개 URL HTTP 200');
  await page.locator('.reveal .slides > section.scene').first().waitFor({timeout:30000});
  assert.equal(await page.locator('.reveal .slides>section.scene').count(),11);
@@ -19,7 +19,7 @@ try{
  const vz=await page.locator('#vizzu-demo').evaluate(e=>({visible:getComputedStyle(e).display!=='none',child:e.childElementCount,canvases:e.querySelectorAll('canvas').length}));
  await page.evaluate(()=>window.rneDeck.slide(3));await page.waitForTimeout(1000);
  const canvasCount=await page.locator('#precision-chart canvas').count();assert.ok(canvasCount>=1);
- await page.locator('#btn-qa').click();await page.locator('#qa-root.visible').waitFor();
+ await page.keyboard.press('q');await page.locator('#qa-root.visible').waitFor();
  const questions=await page.locator('.qa-number').innerText();
  await page.locator('#qa-close').click();
  const screenshot=path.join(process.cwd(),'test-results','deployed-main.jpg');
