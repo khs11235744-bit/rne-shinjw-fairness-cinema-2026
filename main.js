@@ -122,9 +122,9 @@ function showDataChart(){
   if(!graph)graph=echarts.init(e,null,{renderer:'canvas',devicePixelRatio:Math.min(devicePixelRatio,1.5)});
   graph.clear();
   graph.setOption({animationDuration:1450,animationEasing:'cubicOut',grid:{top:28,bottom:15,right:80,left:30,containLabel:true},
-  xAxis:{type:'value',max:100,axisLabel:{fontSize:15,color:'#b9d0df',formatter:'{value}%'},axisLine:{show:false},splitLine:{lineStyle:{color:'#ffffff18'}}},
-  yAxis:{type:'category',data:['기타 방식','각자 소비'],axisLabel:{fontSize:18,fontWeight:700,color:'#f2fdff'},axisLine:{show:false},axisTick:{show:false}},
-  series:[{type:'bar',barWidth:48,itemStyle:{borderRadius:[0,10,10,0],color:item=>item.dataIndex===1?'#64f5d2':'#597995'},label:{show:true,position:'right',color:'#f0fbff',fontSize:24,fontWeight:900,formatter:'{c}%'},data:[22.6,77.4]}],
+  xAxis:{type:'value',max:100,axisLabel:{fontSize:15,color:'#59776b',formatter:'{value}%'},axisLine:{show:false},splitLine:{lineStyle:{color:'#395b4730'}}},
+  yAxis:{type:'category',data:['기타 방식','각자 소비'],axisLabel:{fontSize:18,fontWeight:700,color:'#2b5147'},axisLine:{show:false},axisTick:{show:false}},
+  series:[{type:'bar',barWidth:48,itemStyle:{borderRadius:[0,10,10,0],color:item=>item.dataIndex===1?'#147662':'#b3a889'},label:{show:true,position:'right',color:'#274c43',fontSize:24,fontWeight:900,formatter:'{c}%'},data:[22.6,77.4]}],
   tooltip:{trigger:'axis',formatter:arr=>arr.map(v=>esc(v.name)+': '+v.value+'%').join('<br>')}});
  }catch(err){console.warn('통계 애니메이션 대체 표시',err)}
 }
